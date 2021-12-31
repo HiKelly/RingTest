@@ -56,35 +56,19 @@ contract('LSAG', accounts => {
             '0x243d34a84942e1d9c1df9b6bc00fa6a073b89c9a4b9fe7959346161ca66a9852'
         ]
         //console.log("keyImage");
-        const keyImage1 = [
+        const keyImage = [
             '0x052f545a6b88959b463c86b280bc201b16eee954b7190512c25624d4a2c8bb4a',
             '0x24fbbb0185ad24760408a2d383a1cd8de2be69b6bd52fee38b722927a1d6430d'
         ]
-        /*const keyImage1 = [
-            '0x052f545a6b88959b463c86b280bc201b16eee954b7190512c25624d4a2c8bb4a',
-            '0x24fbbb0185ad24760408a2d383a1cd8de2be69b6bd52fee38b722927a1d6430d'
-        ]
-        console.log(keyImage1);*/
         const signing_key = '0x0e90a24937630c3ade5d52753792decf936f839cc317b9418257da02ee6cf0ab';
         const key_idx = 0;
         const result =  rsig.ring_signature_hex(signing_key, key_idx, message, publicKeys);
-        const c1 = result[0];
-        const s1 = result[3];
-        const keyImage = [result[1],result[2]];
-        //var keyImage2 = [result[2][0], result[2][1]];
-        /*console.log("c1");
-        console.log(c1);
-        console.log("s1");
-        console.log(s1);
-        console.log("MyKeyImage");
-        console.log(keyImage);*/
-        //console.log(typeof(keyImage2[0]) == typeof ("test"));
         let isVerified
 
         isVerified = await lsag.verify.call(
             message,
             c0,
-            keyImage1,
+            keyImage,
             s,
             publicKeys,
         )

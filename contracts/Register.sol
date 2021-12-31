@@ -11,6 +11,10 @@ contract Register {
         return publicKeys[i];
     }
 
+    function getPublicKeys() public view returns (uint256[2][] memory) {
+        return publicKeys;
+    }
+
     function getCountOfUsers() public view returns (uint) {
         return publicKeys.length;
     }

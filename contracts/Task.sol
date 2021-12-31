@@ -1,18 +1,18 @@
 pragma solidity >=0.5.0 <0.6.0;
 pragma experimental ABIEncoderV2;
 import "./Register.sol";
+import "./LSAG.sol";
 
 contract Task{
     address payable[] workers;   // 记录workers，方便转账
     address requester;  // 记录 requester
     string title;   // 任务标题
     string descriptionOfTask;    // 任务描述
-    mapping(string => string) answerList;  // 答案列表
+    mapping(address => string) answerList;  // 答案列表
     string[] list;
     uint answerCount;   // 已完成答案数
     uint award;    // 酬金
     uint numberOfWorkersNeeded;   // 需要完成的工人数
-    uint unitAward; // 单个工人获得的酬金数
     bool finished;  //requester是否已经获取答案
 
     modifier onlyRequester {    // 创建限定符
@@ -26,7 +26,6 @@ contract Task{
         answerCount = 0;
         award = 0;
         numberOfWorkersNeeded = 0;
-        unitAward = 0;
     }
 
     function addQuestion(string memory _title, string memory _descriptionOfTask, uint _numberOfWorkersNeeded) payable public {
@@ -42,8 +41,8 @@ contract Task{
         return title;
     }
 
-    function ifAnswered(string memory sender) public returns(bool){
-        if (keccak256(bytes(answerList[sender]))  == keccak256(bytes("")))
+    function ifAnswered() public returns(bool){
+        if (keccak256(bytes(answerList[msg.sender]))  == keccak256(bytes("")))
             return true;
         return false;
     }
@@ -51,24 +50,22 @@ contract Task{
     // 回答问题
     function answerQuestion(
         Register reg,
-        LSAG lsag,
-        bytes memory message,
+        string memory answer,
         uint256 c0,
         uint256[2] memory keyImage,
-        uint256[] memory s,
-        uint256[2][] memory publicKeys
+        uint256[] memory s
     ) public {
-        require(reg.isUser(user), "Must be a user!");
-        require(ifAnswered(user), "Must not submitted an answer!");
-        isVerified = lsag.verify(
+        bytes memory message = bytes(answer);
+        bool isVerified = LSAG.verify(
             message,
             c0,
-            keyImage1,
+            keyImage,
             s,
-            publicKeys
+            reg
         );
-        answerList[user] = _answer;
-        list.push(_answer);
+        require(isVerified == true, "The user hasn't registed, or the user has submitted an answer!");
+        answerList[msg.sender] = answer;
+        list.push(answer);
         workers.push(msg.sender);
         answerCount++;
     }

@@ -1965,7 +1965,7 @@
                       "name": "addmod",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 645,
+                      "referencedDeclaration": 932,
                       "src": "2887:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_addmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -2337,7 +2337,7 @@
                       "name": "mulmod",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 658,
+                      "referencedDeclaration": 945,
                       "src": "3200:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_mulmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -2446,7 +2446,7 @@
                         "name": "mulmod",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 658,
+                        "referencedDeclaration": 945,
                         "src": "3233:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_mulmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -2567,7 +2567,7 @@
                         "name": "addmod",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 645,
+                        "referencedDeclaration": 932,
                         "src": "3269:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_addmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -2872,7 +2872,7 @@
                         "name": "mulmod",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 658,
+                        "referencedDeclaration": 945,
                         "src": "3451:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_mulmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -3112,7 +3112,7 @@
                       "name": "mulmod",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 658,
+                      "referencedDeclaration": 945,
                       "src": "3643:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_mulmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -3221,7 +3221,7 @@
                         "name": "mulmod",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 658,
+                        "referencedDeclaration": 945,
                         "src": "3676:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_mulmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -3342,7 +3342,7 @@
                         "name": "addmod",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 645,
+                        "referencedDeclaration": 932,
                         "src": "3712:6:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_addmod_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -5446,7 +5446,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 645,
+                              "referencedDeclaration": 932,
                               "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                               "value": "addmod"
                             },
@@ -5845,7 +5845,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 658,
+                              "referencedDeclaration": 945,
                               "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                               "value": "mulmod"
                             },
@@ -5966,7 +5966,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 658,
+                                  "referencedDeclaration": 945,
                                   "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                                   "value": "mulmod"
                                 },
@@ -6092,7 +6092,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 645,
+                                  "referencedDeclaration": 932,
                                   "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                                   "value": "addmod"
                                 },
@@ -6429,7 +6429,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 658,
+                                  "referencedDeclaration": 945,
                                   "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                                   "value": "mulmod"
                                 },
@@ -6681,7 +6681,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 658,
+                              "referencedDeclaration": 945,
                               "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                               "value": "mulmod"
                             },
@@ -6802,7 +6802,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 658,
+                                  "referencedDeclaration": 945,
                                   "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                                   "value": "mulmod"
                                 },
@@ -6928,7 +6928,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 645,
+                                  "referencedDeclaration": 932,
                                   "type": "function (uint256,uint256,uint256) pure returns (uint256)",
                                   "value": "addmod"
                                 },
@@ -7210,7 +7210,7 @@
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2021-12-31T07:31:08.206Z",
+  "updatedAt": "2021-12-31T08:19:46.281Z",
   "devdoc": {
     "methods": {}
   },

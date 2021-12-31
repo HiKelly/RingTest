@@ -1,6 +1,7 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 import "./AltBn128.sol";
+import "./Register.sol";
 
 /*
 Linkable Spontaneous Anonymous Groups
@@ -99,11 +100,12 @@ library LSAG {
         uint256 c0,
         uint256[2] memory keyImage,
         uint256[] memory s,
-        uint256[2][] memory publicKeys
+        Register reg
     ) public view
     returns (bool)
     {
-
+        uint256[2][] memory publicKeys;
+        publicKeys = reg.getPublicKeys();
         require(publicKeys.length >= 2, "Signature size too small");
         require(publicKeys.length == s.length, "Signature sizes do not match!");
 
