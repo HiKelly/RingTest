@@ -97,7 +97,7 @@ library LSAG {
     function verify(
         bytes memory message,
         uint256 c0,
-        uint256[] memory keyImage0,
+        uint256[2] memory keyImage,
         uint256[] memory s,
         uint256[2][] memory publicKeys
     ) public view
@@ -106,10 +106,6 @@ library LSAG {
 
         require(publicKeys.length >= 2, "Signature size too small");
         require(publicKeys.length == s.length, "Signature sizes do not match!");
-
-        uint256[2] memory keyImage;
-        keyImage[0] = keyImage0[0];
-        keyImage[1] = keyImage0[1];
 
         uint256 c = c0;
         uint256 i = 0;
@@ -135,7 +131,7 @@ library LSAG {
         for (i = 0; i < publicKeys.length; i++) {
             z_1 = ringCalcZ1(publicKeys[i], c, s[i]);
             z_2 = ringCalcZ2(keyImage, h, s[i], c);
-            /*
+
             if (i != publicKeys.length - 1) {
                 c = H1(
                     abi.encodePacked(
@@ -146,9 +142,9 @@ library LSAG {
                         z_2
                     )
                 );
-            }*/
+            }
         }
-        /*
+
         return c0 == H1(
             abi.encodePacked(
                 hBytes,
@@ -157,7 +153,6 @@ library LSAG {
                 z_1,
                 z_2
             )
-        );*/
-        return true;
+        );
     }
 }

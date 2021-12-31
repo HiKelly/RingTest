@@ -17,17 +17,14 @@ const ring_signature_hex = (signing_key, key_idx, M, y) => {
     }
 
     signature = ring_signature(signing_key_int, key_idx, M, pubkeys_as_points)
-    return signature
-    /*
     result = []
-    result[0] = signature[0].toString()
-    result[1] = signature[2].affineX.toString()
-    result[2] = signature[2].affineY.toString()
+    result[0] = signature[0].toString(16)
+    result[1] = signature[2].affineX.toString(16)
+    result[2] = signature[2].affineY.toString(16)
     for(var i = 0; i < signature[1].length; i++) {
-        result[i + 3] = signature[1][i].toString()
+        result[i + 3] = signature[1][i].toString(16)
     }
     return result
-     */
 }
 
 // method used when input parameters are already converted
@@ -89,18 +86,8 @@ const ring_signature = (signing_key, key_idx, M, y) => {
     }
     // STEP 4
     s[key_idx] = (u.subtract(signing_key.multiply(c[key_idx]))).mod(new BigInteger("" + curve256k1.n))
-    c0 = '0x' + c[0].toString(16);
-    smp = [];
-    for(var i = 0; i < s.length; i++) {
-        smp[i] = '0x'+s[i].toString(16);
-    }
-    ymp = ['0x'+(Y.affineX).toString(16),'0x'+(Y.affineY).toString(16)];
-    //ymp = [];
-    //ymp[0] = '0x'+Y.affineX.toString(16);
-    //ymp[1] = '0x'+Y.affineY.toString(16);
-    //ymp[0] = Y.affineX.toString(16);
-    //ymp[1] = Y.affineY.toString(16);
-    return [c0, smp, ymp]
+
+    return [c[0], s, Y]
 }
 
 const H1 = (msg) =>{
