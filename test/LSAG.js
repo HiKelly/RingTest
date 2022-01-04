@@ -1,5 +1,6 @@
 const rsig = require("../ring_signature_hex");
 const LSAG = artifacts.require('LSAG.sol')
+const Task = artifacts.require("Task");
 
 contract('LSAG', accounts => {
     // Converts Big Number to hex strings
@@ -27,7 +28,7 @@ contract('LSAG', accounts => {
     */
     it('verify', async () => {
         const lsag = await LSAG.deployed()
-
+        let taskInstance = await Task.deployed()
         const secretKeys = [
             '0x0e90a24937630c3ade5d52753792decf936f839cc317b9418257da02ee6cf0ab',
             '0x1cb0e68ec58bfa7863289b95c6d8eb9d9e66cf9f4804d5ebd346338ebad7fa6e',
@@ -66,16 +67,17 @@ contract('LSAG', accounts => {
         let isVerified
 
         isVerified = await lsag.verify.call(
+            publicKeys,
             message,
             c0,
             keyImage,
-            s,
-            publicKeys,
+            s
         )
         console.log(isVerified)
         assert.equal(true, isVerified)
+        let a = await taskInstance.answerQuestion(publicKeys, message, c0, keyImage, s, {from:accounts[1]});
         //const result = rsig.signatureGeneration(message,publicKeys,signing_key);
-        //console.log(result);
+        console.log(a);
         /*
         const invalidMessage = '0x45544820666f7220796f7520616e642065766572796f6e6522'
         isVerified = await lsag.verify(

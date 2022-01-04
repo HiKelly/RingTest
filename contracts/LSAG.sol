@@ -1,7 +1,6 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 import "./AltBn128.sol";
-import "./Register.sol";
 
 /*
 Linkable Spontaneous Anonymous Groups
@@ -96,21 +95,25 @@ library LSAG {
     * Section 4.2 of the paper https://eprint.iacr.org/2004/027.pdf
     */
     function verify(
+        uint256[2][] memory publicKeys,
         bytes memory message,
         uint256 c0,
         uint256[2] memory keyImage,
-        uint256[] memory s,
-        Register reg
+        uint256[] memory s
     ) public view
     returns (bool)
     {
-        uint256[2][] memory publicKeys;
-        publicKeys = reg.getPublicKeys();
+        /*uint256[2][] memory publicKeys;
+        //uint256 n = reg.getPublicKeysLength();
+        uint256 i = 0;
+        for (i = 0; i < 3; i++) {
+            publicKeys[i] = reg.getPublicKeys(i);
+        }*/
+        uint256 i = 0;
         require(publicKeys.length >= 2, "Signature size too small");
         require(publicKeys.length == s.length, "Signature sizes do not match!");
 
         uint256 c = c0;
-        uint256 i = 0;
 
         // Step 1
         // Extract out public key bytes

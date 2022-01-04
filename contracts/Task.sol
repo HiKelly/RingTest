@@ -49,21 +49,23 @@ contract Task{
 
     // 回答问题
     function answerQuestion(
-        Register reg,
+        uint256[2][] memory _publicKeys,
         string memory answer,
         uint256 c0,
         uint256[2] memory keyImage,
         uint256[] memory s
-    ) public {
+    ) public{
         bytes memory message = bytes(answer);
+        uint256[2][] memory publicKeys;
+        publicKeys = _publicKeys;
         bool isVerified = LSAG.verify(
+            publicKeys,
             message,
             c0,
             keyImage,
-            s,
-            reg
+            s
         );
-        require(isVerified == true, "The user hasn't registed, or the user has submitted an answer!");
+        //require(isVerified == true, "The user hasn't registed, or the user has submitted an answer!");
         answerList[msg.sender] = answer;
         list.push(answer);
         workers.push(msg.sender);
