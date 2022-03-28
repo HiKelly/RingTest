@@ -66,25 +66,17 @@ contract Task{
             s
         );
         //require(isVerified == true, "The user hasn't registed, or the user has submitted an answer!");
-        answerList[msg.sender] = answer;
         list.push(answer);
-        workers.push(msg.sender);
+        payAward();
         answerCount++;
     }
 
-    function payAward() onlyRequester public {
-        require(finished == false, "You have collected the answers!");
-        require(workers.length >= numberOfWorkersNeeded, "There isn't enough number of answers!");
-        finished = true;
-        uint unitAward = award / workers.length;
-        for (uint i = 0; i < workers.length; i++) {
-            workers[i].transfer(unitAward);
-        }
+    function payAward() private {
+        msg.sender.transfer(award / numberOfWorkersNeeded);
     }
 
     // 收集答案
     function collectAnswers() onlyRequester public returns(string[] memory) {
-        require(finished == true, "You haven't pay the awards!");
         return list;
     }
 

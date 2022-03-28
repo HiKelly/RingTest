@@ -25,7 +25,7 @@ contract("Task", async function(accounts){
             assert.equal(count1.valueOf(), 1);
 
         });
-
+    /*
         it("Should add users ", async () => {
             let users = [
                 ['0x11c4cfafeb9355518b1293f083514c835832584ff443b7466cc1f83a0e22855e',
@@ -42,19 +42,19 @@ contract("Task", async function(accounts){
             console.log("count = " + count);
             console.assert(count.valueOf(), 4);
         })
-
+*/
         it("Should add a task ", async () => {
-            let b = await taskInstance.addQuestion("test", "This is a test", 1, {from:accounts[0], value:1e19});
-            console.log(b);
-            let title = await taskInstance.getTitle.call();
-            console.log("title = " + title);
-            assert.equal(title, "test");
+            await taskInstance.addQuestion("test", "This is a test", 1, {from:accounts[0], value:1e19});
+            //console.log(b);
+            //let title = await taskInstance.getTitle.call();
+            //console.log("title = " + title);
+            //assert.equal(title, "test");
         })
 
         it("Should submit an answer ", async () => {
             var msg = "/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme";
             var encrypted = key.encrypt(msg, 'base64');
-            console.log(encrypted);
+            //console.log(encrypted);
             const c0 = '0x16f154c8b054472b27fa5ddfdc6efaef113f287567f0bdfe58a8890d8c6fc4ec'
             const s = [
                 '0x2374c0249d845fb3d4b24b4eeb50d8a4cdb8fb366095ac6a81f4069620408de9',
@@ -94,15 +94,13 @@ contract("Task", async function(accounts){
             var encrypted = key.encrypt(msg, 'base64');
             let a = await taskInstance.answerQuestion(accounts[1], encrypted, {from:accounts[1]});
         })
-
+        */
         it("Should collect answers ", async () => {
             //let answer0 = await taskInstance.collectAnswers.call({from:accounts[0]});
-            await taskInstance.payAward({from:accounts[0]});
             let answer = await taskInstance.collectAnswers.call({from:accounts[0]});
-            for (var key in answer) {
+            /*for (var key in answer) {
                 console.log(key, " : ", answer[key]);
-            }
+            }*/
         })
-        */
     })
 })
